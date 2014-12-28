@@ -6,43 +6,53 @@
 import os
 import shutil
 
-#The folder to be copied to
+class update:
+#The folder to be copied from and to be copied to
 #
-#destination_dir = 'K:\\Anime'
-destination_dir = unupdated_folder
+#source = 'G:\\Anime'
+#destination = 'K:\\Anime'
 
-#The folder to be copied from
-#
-#basedir = 'G:\\Anime
-basedir = source_folder
+   def __init__(self, source, destination):
+       self.source = source
+       self.destination = destination
 
-#A file that stores the name of copied files
-#
-#updated_anime = open('Updated anime.txt', 'w')
-updated_anime = open('abc.txt', 'w')
+       base_dirs = os.listdir(source)
+       destination_dirs = os.listdir(destination)
 
-base_dirs = os.listdir(basedir)
-destination_dirs = os.listdir(destination_dir)
+       self.base_list = []
+       for dirs in base_dirs:
+           self.base_list.append(dirs)
 
-base_list = []
-for dirs in base_dirs:
-    base_list.append(dirs)
-
-destination_list = []
-for dirs in destination_dirs:
-    destination_list.append(dirs)
+       self.destination_list = []
+       for dirs in destination_dirs:
+           self.destination_list.append(dirs)
 
 
-#actual copying
-for i in base_list:
-    if i in destination_dirs:
-        pass
-    else:
-        try:
-            updated_anime.write(i+'\n')
-            full_file_name = os.path.join(basedir, i)
-            shutil.copytree(full_file_name, destination_dir+'\\'+i)
-        except:
-            updated_anime.write(i+'\n')
-            full_file_name = os.path.join(basedir, i)
-            shutil.copy(full_file_name, destination_dir)
+   def update(self):
+       #A file that stores the name of copied files
+       #
+       #updated_file = open('Updated anime.txt', 'w')
+       updated_file = open('updates_files', 'w')
+
+       for i in self.base_list:
+
+           if i in self.destination_list:
+               pass
+
+           else:
+
+               try:
+                   updated_file.write(i+'\n')
+                   full_file_name = os.path.join(self.source, i)
+                   shutil.copytree(full_file_name, self.destination+'\\'+i)
+
+               except:
+                   updated_file.write(i+'\n')
+                   full_file_name = os.path.join(self.source, i)
+                   shutil.copy(full_file_name, self.destination)
+
+
+if __name__ == "__main__":
+   #first parameter is the source
+   x = update('G:\\Anime', 'K:\\Anime')
+   x.update()
