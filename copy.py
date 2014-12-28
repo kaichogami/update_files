@@ -7,13 +7,19 @@ import os
 import shutil
 
 #The folder to be copied to
-destination_dir = 'K:\\Anime'
+#
+#destination_dir = 'K:\\Anime'
+destination_dir = unupdated_folder
 
 #The folder to be copied from
-basedir = 'G:\\Anime'
+#
+#basedir = 'G:\\Anime
+basedir = source_folder
 
-#A file that gives the name of copied files
-updated_anime = open('Updated anime.txt', 'w')
+#A file that stores the name of copied files
+#
+#updated_anime = open('Updated anime.txt', 'w')
+updated_anime = open('abc.txt', 'w')
 
 base_dirs = os.listdir(basedir)
 destination_dirs = os.listdir(destination_dir)
@@ -40,7 +46,3 @@ for i in base_list:
             updated_anime.write(i+'\n')
             full_file_name = os.path.join(basedir, i)
             shutil.copy(full_file_name, destination_dir)
-            
-
-            
-
