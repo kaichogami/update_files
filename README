@@ -1,0 +1,5 @@
+This is a simple python script which will copy all the directories and
+files from a source folder to a destination folder.
+Make sure all copy permission is enabled. 
+
+NOTE: This will not check files or directories of a directory in the destination folder.
